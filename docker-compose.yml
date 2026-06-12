@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
   app:
     build:
@@ -10,3 +11,17 @@ services:
       - .:/var/www/html
     env_file:
       - .env
+=======
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mentup-app
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    env_file:
+      - .env
+>>>>>>> c22c83d5b4b52fe28057be2078f0e7efea7f5356
