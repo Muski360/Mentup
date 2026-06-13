@@ -6,19 +6,29 @@ $error = '';
 $name = '';
 $email = '';
 
+if (isset($_SESSION['user_id'])) {
+    $_SESSION['snack'] = [
+        'type' => 'success',
+        'message' => "Voc\u{00EA} j\u{00E1} est\u{00E1} logado.",
+    ];
+
+    header('Location: dashboard.php');
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name'] ?? '');
     $email = trim($_POST['email'] ?? '');
-    $password = $_POST['password'] ?? '';
+    $plainPassword = $_POST['password'] ?? '';
     $passwordConfirmation = $_POST['password_confirmation'] ?? '';
 
     if (strlen($name) < 2) {
         $error = 'O nome deve conter pelo menos 2 caracteres.';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = 'O email informado não é válido.';
-    } elseif (strlen($password) < 6) {
+    } elseif (strlen($plainPassword) < 6) {
         $error = 'A senha deve conter pelo menos 6 caracteres.';
-    } elseif ($password !== $passwordConfirmation) {
+    } elseif ($plainPassword !== $passwordConfirmation) {
         $error = 'A senha deve ser a mesma.';
     } else {
         try {
@@ -36,9 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
 
             if ($stmt->fetch()) {
-                $error = 'Este email ja esta registrado. Tente outro ou faca login.';
+                $error = 'Este email já está registrado. Tente outro ou faça login.';
             } else {
-                $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+                $passwordHash = password_hash($plainPassword, PASSWORD_DEFAULT);
 
                 $stmt = $pdo->prepare("
                     insert into users (
@@ -60,6 +70,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ]);
 
                 $user = $stmt->fetch();
+
+                // Troca o ID da sessao antes de autenticar o usuario recem-cadastrado.
+                session_regenerate_id(true);
 
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_name'] = $user['name'];

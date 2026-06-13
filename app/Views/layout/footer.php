@@ -27,7 +27,12 @@
 </footer>
 <?php endif; ?>
 
-<script src="<?= $basePath ?>assets/js/script.js"></script>
+<?php
+$publicPath = $publicPath ?? (realpath(__DIR__ . '/../../../public') ?: (__DIR__ . '/../../../public'));
+$scriptFile = $publicPath . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'script.js';
+$scriptVersion = is_file($scriptFile) ? '?v=' . filemtime($scriptFile) : '';
+?>
+<script src="<?= $basePath ?>assets/js/script.js<?= $scriptVersion ?>"></script>
 </body>
 
 </html>

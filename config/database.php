@@ -7,22 +7,23 @@ use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->safeLoad();
 
-$host = $_ENV['DB_HOST'] ?? null;
-$port = $_ENV['DB_PORT'] ?? '5432';
-$dbname = $_ENV['DB_NAME'] ?? 'postgres';
-$user = $_ENV['DB_USER'] ?? null;
-$password = $_ENV['DB_PASSWORD'] ?? null;
-$sslmode = $_ENV['DB_SSLMODE'] ?? 'require';
+// Usa nomes prefixados para nao sobrescrever variaveis dos formularios que incluem este arquivo.
+$dbHost = $_ENV['DB_HOST'] ?? null;
+$dbPort = $_ENV['DB_PORT'] ?? '5432';
+$dbName = $_ENV['DB_NAME'] ?? 'postgres';
+$dbUser = $_ENV['DB_USER'] ?? null;
+$dbPassword = $_ENV['DB_PASSWORD'] ?? null;
+$dbSslmode = $_ENV['DB_SSLMODE'] ?? 'require';
 
-if (!$host || !$user || !$password) {
+if (!$dbHost || !$dbUser || !$dbPassword) {
     die('Error: Database .env is incomplete. Check .env variables.');
 }
 
 try {
     $pdo = new PDO(
-        "pgsql:host={$host};port={$port};dbname={$dbname};sslmode={$sslmode}",
-        $user,
-        $password,
+        "pgsql:host={$dbHost};port={$dbPort};dbname={$dbName};sslmode={$dbSslmode}",
+        $dbUser,
+        $dbPassword,
         [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -30,5 +31,5 @@ try {
         ]
     );
 } catch (PDOException $e) {
-    die('Error: Could not connect to the database.');
+    die('Erro ao conectar com o banco: ' . $e->getMessage());
 }

@@ -1,4 +1,77 @@
 <?php
+//Backend de Login
+session_start();
+
+$error = "";
+$email = "";
+
+if (isset($_SESSION['user_id'])) {
+    $_SESSION['snack'] = [
+        'type' => 'success',
+        'message' => "Voc\u{00EA} j\u{00E1} est\u{00E1} logado.",
+    ];
+
+    header('Location: dashboard.php');
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Garante que uma tentativa de login comece sem reaproveitar uma sessao autenticada anterior.
+    unset($_SESSION['user_id'], $_SESSION['user_name'], $_SESSION['user_email']);
+
+    $email = trim($_POST['email'] ?? '');
+    $plainPassword = $_POST['password'] ?? '';
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = 'Digite um e-mail válido.';
+    } elseif (empty($plainPassword)) {
+        $error = 'Digite sua senha.';
+    } else {
+        try {
+            require_once __DIR__ . '/../config/database.php';
+
+            $stmt = $pdo->prepare("
+                select
+                    id,
+                    name,
+                    email,
+                    password_hash,
+                    is_active
+                from users
+                where email = :email
+                limit 1
+            ");
+
+            $stmt->execute([
+                ':email' => $email
+            ]);
+
+            $user = $stmt->fetch();
+            $storedHash = is_array($user) ? ($user['password_hash'] ?? '') : '';
+            $hasValidHash = is_string($storedHash) && password_get_info($storedHash)['algo'] !== 0;
+            $isActive = is_array($user) && filter_var($user['is_active'] ?? false, FILTER_VALIDATE_BOOLEAN);
+
+            // So autentica usuarios ativos e com hash de senha valido gerado por password_hash().
+            if (!$user || !$isActive || !$hasValidHash || !password_verify($plainPassword, $storedHash)) {
+                $error = 'E-mail ou senha inválidos.';
+            } else {
+                session_regenerate_id(true);
+
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_name'] = $user['name'];
+                $_SESSION['user_email'] = $user['email'];
+
+                header('Location: dashboard.php');
+                exit;
+            }
+        } catch (PDOException $e) {
+            $error = 'Erro ao fazer login.';
+        }
+    }
+}
+
+
+
 $pageTitle = 'Login - Mentup';
 $basePath = '';
 $pageStyles = ['assets/css/auth.css'];
@@ -35,13 +108,19 @@ require __DIR__ . '/../app/Views/layout/header.php';
                 <p>Acesse sua conta agora, de forma totalmente segura.</p>
             </header>
 
-            <form class="auth-form" action="#" method="post">
+            <?php if ($error): ?>
+                <div class="auth-alert" role="alert">
+                    <?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?>
+                </div>
+            <?php endif; ?>
+
+            <form class="auth-form" action="login.php" method="post">
                 <label class="field" for="email">
                     <span class="field__label">E-mail</span>
                     <span class="field__control">
                         <img class="field__icon" src="assets/img/icon/mail.svg" alt="" aria-hidden="true">
                         <input id="email" name="email" type="email" placeholder="seu@email.com" autocomplete="email"
-                            required>
+                            value="<?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?>" required>
                     </span>
                 </label>
 

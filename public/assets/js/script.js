@@ -37,3 +37,46 @@ passwordToggles.forEach((toggle) => {
         toggle.setAttribute('aria-label', shouldShowPassword ? 'Ocultar senha' : 'Mostrar senha');
     });
 });
+
+const logoutModal = document.querySelector('[data-logout-modal]');
+const logoutOpen = document.querySelector('[data-logout-open]');
+const logoutCloseButtons = document.querySelectorAll('[data-logout-close]');
+
+if (logoutModal && logoutOpen) {
+    const openLogoutModal = () => {
+        logoutModal.classList.add('is-open');
+        logoutModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+    };
+
+    const closeLogoutModal = () => {
+        logoutModal.classList.remove('is-open');
+        logoutModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        logoutOpen.focus();
+    };
+
+    logoutOpen.addEventListener('click', openLogoutModal);
+
+    logoutCloseButtons.forEach((button) => {
+        button.addEventListener('click', closeLogoutModal);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && logoutModal.classList.contains('is-open')) {
+            closeLogoutModal();
+        }
+    });
+}
+
+const snacks = document.querySelectorAll('[data-snack]');
+
+snacks.forEach((snack) => {
+    window.setTimeout(() => {
+        snack.classList.add('is-hiding');
+
+        window.setTimeout(() => {
+            snack.remove();
+        }, 220);
+    }, 3000);
+});
