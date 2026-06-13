@@ -9,7 +9,8 @@ require __DIR__ . '/../app/Views/layout/header.php';
     <div class="container hero__grid">
         <div class="hero__content">
             <h1>Organize seus campeonatos com <span>mais facilidade</span></h1>
-            <p>Gerencie times, partidas, tabelas e resultados em uma plataforma simples, moderna e feita para quem vive o esporte.</p>
+            <p>Gerencie times, partidas, tabelas e resultados em uma plataforma simples, moderna e feita para quem vive
+                o esporte.</p>
 
             <div class="hero__actions">
                 <a class="btn btn--primary btn--large" href="criar-campeonato.php">
@@ -49,7 +50,8 @@ require __DIR__ . '/../app/Views/layout/header.php';
         <article class="feature-card">
             <img src="assets/img/icon/check.svg" alt="" aria-hidden="true">
             <h2>F&aacute;cil de usar</h2>
-            <p>Enquanto voc&ecirc; perde tempo fazendo planilhas e se perdendo em papel, a Mentup facilita tudo para voc&ecirc;.</p>
+            <p>Enquanto voc&ecirc; perde tempo fazendo planilhas e se perdendo em papel, a Mentup facilita tudo para
+                voc&ecirc;.</p>
         </article>
 
         <article class="feature-card">
@@ -73,7 +75,8 @@ require __DIR__ . '/../app/Views/layout/header.php';
         <div class="how-it-works__grid">
             <div class="how-it-works__copy">
                 <h3>O <span>sistema completo</span> para seu campeonato!</h3>
-                <p>Nossa miss&atilde;o &eacute; simplificar a cria&ccedil;&atilde;o de campeonatos e o gerenciamento de times, promovendo um ambiente esportivo mais organizado, justo e transparente.</p>
+                <p>Nossa miss&atilde;o &eacute; simplificar a cria&ccedil;&atilde;o de campeonatos e o gerenciamento de
+                    times, promovendo um ambiente esportivo mais organizado, justo e transparente.</p>
 
                 <ul class="check-list">
                     <li>Cria&ccedil;&atilde;o de campeonatos de esportes</li>
@@ -99,7 +102,7 @@ require __DIR__ . '/../app/Views/layout/header.php';
             <div class="support-card__content">
                 <p>Est&aacute; com d&uacute;vidas?</p>
                 <h2>Fale com nossa equipe!</h2>
-                <a class="btn btn--whatsapp" href="https://wa.me/5599999999999" target="_blank" rel="noopener">
+                <a class="btn btn--whatsapp" href="https://wa.me/5519971344281" target="_blank" rel="noopener">
                     <img src="assets/img/icon/whatsapp-753x753.png" alt="" aria-hidden="true">
                     Conversar pelo WhatsApp
                 </a>
@@ -116,7 +119,7 @@ require __DIR__ . '/../app/Views/layout/header.php';
                 <p>Comece agora organizar sua competitividade!</p>
             </div>
 
-            <a class="btn btn--primary final-cta__button" href="cadastro.php">Comece agora</a>
+            <a class="btn btn--primary final-cta__button" href="register.php">Comece agora</a>
             <img class="final-cta__trophy" src="assets/img/images/CTA-trophy.png" alt="" aria-hidden="true">
         </div>
     </div>

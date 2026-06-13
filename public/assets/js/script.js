@@ -18,3 +18,22 @@ if (header && menuToggle) {
         });
     });
 }
+
+const passwordToggles = document.querySelectorAll('[data-password-toggle]');
+
+passwordToggles.forEach((toggle) => {
+    const inputId = toggle.getAttribute('aria-controls');
+    const input = inputId ? document.getElementById(inputId) : null;
+
+    if (!input) {
+        return;
+    }
+
+    toggle.addEventListener('click', () => {
+        const shouldShowPassword = input.type === 'password';
+
+        input.type = shouldShowPassword ? 'text' : 'password';
+        toggle.classList.toggle('is-visible', shouldShowPassword);
+        toggle.setAttribute('aria-label', shouldShowPassword ? 'Ocultar senha' : 'Mostrar senha');
+    });
+});

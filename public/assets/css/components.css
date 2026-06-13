@@ -59,6 +59,10 @@
     filter: none;
 }
 
+.btn--large .btn__icon-dark {
+    filter: none;
+}
+
 .btn--whatsapp {
     width: max-content;
     min-height: 45px;
