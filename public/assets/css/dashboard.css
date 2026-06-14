@@ -153,7 +153,8 @@
     filter: grayscale(1) brightness(0.35);
 }
 
-.logout-modal {
+.logout-modal,
+.delete-account-modal {
     position: fixed;
     inset: 0;
     z-index: 50;
@@ -163,17 +164,20 @@
     padding: 24px;
 }
 
-.logout-modal.is-open {
+.logout-modal.is-open,
+.delete-account-modal.is-open {
     display: flex;
 }
 
-.logout-modal__backdrop {
+.logout-modal__backdrop,
+.delete-account-modal__backdrop {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.58);
 }
 
-.logout-modal__dialog {
+.logout-modal__dialog,
+.delete-account-modal__dialog {
     position: relative;
     z-index: 1;
     width: min(100%, 430px);
@@ -184,7 +188,8 @@
     text-align: center;
 }
 
-.logout-modal__dialog h2 {
+.logout-modal__dialog h2,
+.delete-account-modal__dialog h2 {
     margin: 0;
     color: #050505;
     font-size: 26px;
@@ -192,33 +197,45 @@
     line-height: 1.2;
 }
 
-.logout-modal__dialog p {
+.logout-modal__dialog p,
+.delete-account-modal__dialog p {
     margin: 14px 0 0;
     color: var(--color-muted);
     font-size: 16px;
     line-height: 1.45;
 }
 
-.logout-modal__actions {
+.logout-modal__actions,
+.delete-account-modal__actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 14px;
     margin-top: 28px;
 }
 
-.logout-modal__actions .btn {
+.logout-modal__actions .btn,
+.delete-account-modal__actions .btn {
     width: 100%;
     min-height: 48px;
     font-size: 16px;
     font-weight: 700;
 }
 
-.logout-modal__cancel {
+.logout-modal__cancel,
+.delete-account-modal__cancel {
     cursor: pointer;
 }
 
 .logout-modal__confirm {
     border: 0;
+}
+
+.delete-account-modal__confirm {
+    border: 0;
+    border-radius: 8px;
+    background: #ff2418;
+    color: #fff;
+    cursor: pointer;
 }
 
 .dashboard-home {
@@ -231,6 +248,163 @@
     background-size: cover;
     background-repeat: no-repeat;
     padding: 45px clamp(28px, 3.8vw, 55px);
+}
+
+.settings-page {
+    min-width: 0;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #fbfbfb;
+    padding: 43px clamp(32px, 6vw, 118px) 56px;
+}
+
+.settings-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.settings-profile {
+    display: flex;
+    align-items: center;
+    gap: 23px;
+    min-width: 0;
+}
+
+.settings-profile__avatar {
+    width: 90px;
+    height: 90px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: #e6e6e6;
+    color: #050505;
+    font-size: 27px;
+    font-weight: 500;
+}
+
+.settings-profile__copy {
+    min-width: 0;
+}
+
+.settings-profile__copy h1 {
+    margin: 0;
+    color: #050505;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.settings-profile__copy p {
+    margin: 8px 0 0;
+    color: var(--color-muted);
+    font-size: 15px;
+    line-height: 1.35;
+}
+
+.settings-edit,
+.settings-logout {
+    width: 45px;
+    height: 45px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    cursor: pointer;
+    transition: background 180ms ease, transform 180ms ease;
+}
+
+.settings-edit:hover,
+.settings-logout:hover {
+    background: #f1f1f1;
+    transform: translateY(-1px);
+}
+
+.settings-edit img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: brightness(0.15);
+}
+
+.settings-logout img {
+    width: 39px;
+    height: 39px;
+    object-fit: contain;
+    filter: invert(27%) sepia(95%) saturate(5400%) hue-rotate(354deg) brightness(102%) contrast(106%);
+}
+
+.settings-options {
+    width: min(100%, 760px);
+    display: grid;
+    gap: 15px;
+    margin-top: 74px;
+}
+
+.settings-option {
+    min-height: 86px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+    padding: 18px 22px;
+}
+
+.settings-option h2 {
+    margin: 0;
+    color: #111;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.settings-option p {
+    margin: 6px 0 0;
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+.settings-option span {
+    flex: 0 0 auto;
+    border-radius: 999px;
+    background: #f1f1f1;
+    color: #686868;
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.settings-delete {
+    width: min(276px, 100%);
+    min-height: 65px;
+    margin-top: auto;
+    margin-left: auto;
+    border: 0;
+    border-radius: 14px;
+    background: #ff2418;
+    color: #fff;
+    font: inherit;
+    font-size: 24px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.settings-delete:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(255, 36, 24, 0.18);
 }
 
 .snack {
@@ -251,6 +425,12 @@
     font-weight: 700;
     line-height: 1.35;
     transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.snack--error {
+    border-color: rgba(255, 36, 24, 0.24);
+    background: #ffe7e5;
+    color: #c91d13;
 }
 
 .snack.is-hiding {
@@ -386,6 +566,10 @@
         min-height: calc(100vh - 280px);
         background-position: 64% center;
     }
+
+    .settings-page {
+        min-height: calc(100vh - 280px);
+    }
 }
 
 @media (max-width: 560px) {
@@ -406,11 +590,66 @@
         font-size: 18px;
     }
 
-    .logout-modal__dialog {
+    .settings-page {
+        padding: 30px 16px 36px;
+    }
+
+    .settings-header {
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .settings-profile {
+        gap: 14px;
+    }
+
+    .settings-profile__avatar {
+        width: 64px;
+        height: 64px;
+        font-size: 20px;
+    }
+
+    .settings-profile__copy h1 {
+        font-size: 20px;
+    }
+
+    .settings-profile__copy p {
+        font-size: 13px;
+    }
+
+    .settings-edit,
+    .settings-logout {
+        width: 38px;
+        height: 38px;
+    }
+
+    .settings-edit img,
+    .settings-logout img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .settings-options {
+        margin-top: 42px;
+    }
+
+    .settings-option {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .settings-delete {
+        margin-top: 46px;
+        font-size: 21px;
+    }
+
+    .logout-modal__dialog,
+    .delete-account-modal__dialog {
         padding: 26px 20px;
     }
 
-    .logout-modal__actions {
+    .logout-modal__actions,
+    .delete-account-modal__actions {
         grid-template-columns: 1fr;
     }
 

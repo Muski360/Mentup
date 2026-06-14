@@ -28,7 +28,7 @@ $menuItems = [
     [
         'key' => 'settings',
         'label' => 'Configura&ccedil;&atilde;o',
-        'href' => '#',
+        'href' => 'settings.php',
         'icon' => 'assets/img/icon/settings.svg',
     ],
 ];

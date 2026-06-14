@@ -39,11 +39,13 @@ passwordToggles.forEach((toggle) => {
 });
 
 const logoutModal = document.querySelector('[data-logout-modal]');
-const logoutOpen = document.querySelector('[data-logout-open]');
+const logoutOpenButtons = document.querySelectorAll('[data-logout-open]');
 const logoutCloseButtons = document.querySelectorAll('[data-logout-close]');
+let lastLogoutOpen = null;
 
-if (logoutModal && logoutOpen) {
-    const openLogoutModal = () => {
+if (logoutModal && logoutOpenButtons.length) {
+    const openLogoutModal = (trigger) => {
+        lastLogoutOpen = trigger;
         logoutModal.classList.add('is-open');
         logoutModal.setAttribute('aria-hidden', 'false');
         document.body.classList.add('modal-open');
@@ -53,10 +55,15 @@ if (logoutModal && logoutOpen) {
         logoutModal.classList.remove('is-open');
         logoutModal.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('modal-open');
-        logoutOpen.focus();
+
+        if (lastLogoutOpen) {
+            lastLogoutOpen.focus();
+        }
     };
 
-    logoutOpen.addEventListener('click', openLogoutModal);
+    logoutOpenButtons.forEach((button) => {
+        button.addEventListener('click', () => openLogoutModal(button));
+    });
 
     logoutCloseButtons.forEach((button) => {
         button.addEventListener('click', closeLogoutModal);
@@ -65,6 +72,37 @@ if (logoutModal && logoutOpen) {
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && logoutModal.classList.contains('is-open')) {
             closeLogoutModal();
+        }
+    });
+}
+
+const deleteAccountModal = document.querySelector('[data-delete-account-modal]');
+const deleteAccountOpen = document.querySelector('[data-delete-account-open]');
+const deleteAccountCloseButtons = document.querySelectorAll('[data-delete-account-close]');
+
+if (deleteAccountModal && deleteAccountOpen) {
+    const openDeleteAccountModal = () => {
+        deleteAccountModal.classList.add('is-open');
+        deleteAccountModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+    };
+
+    const closeDeleteAccountModal = () => {
+        deleteAccountModal.classList.remove('is-open');
+        deleteAccountModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        deleteAccountOpen.focus();
+    };
+
+    deleteAccountOpen.addEventListener('click', openDeleteAccountModal);
+
+    deleteAccountCloseButtons.forEach((button) => {
+        button.addEventListener('click', closeDeleteAccountModal);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && deleteAccountModal.classList.contains('is-open')) {
+            closeDeleteAccountModal();
         }
     });
 }
