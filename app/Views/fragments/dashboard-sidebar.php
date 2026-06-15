@@ -22,7 +22,7 @@ $menuItems = [
     [
         'key' => 'championships',
         'label' => 'Campeonatos',
-        'href' => '#',
+        'href' => 'championship-list.php',
         'icon' => 'assets/img/icon/icon_trophy.svg',
     ],
     [
@@ -41,9 +41,11 @@ $menuItems = [
 
     <nav class="dashboard-nav" aria-label="Navega&ccedil;&atilde;o do painel">
         <?php foreach ($menuItems as $item): ?>
-            <a class="dashboard-nav__link<?= $activeMenu === $item['key'] ? ' is-active' : '' ?>"
+            <a class="dashboard-nav__link dashboard-nav__link--<?= htmlspecialchars($item['key'], ENT_QUOTES, 'UTF-8') ?><?= $activeMenu === $item['key'] ? ' is-active' : '' ?>"
                 href="<?= htmlspecialchars($item['href'], ENT_QUOTES, 'UTF-8') ?>">
-                <img src="<?= $basePath . $item['icon'] ?>" alt="" aria-hidden="true">
+                <span class="dashboard-nav__icon">
+                    <img src="<?= $basePath . $item['icon'] ?>" alt="" aria-hidden="true">
+                </span>
                 <span><?= $item['label'] ?></span>
             </a>
         <?php endforeach; ?>

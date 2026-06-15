@@ -54,11 +54,30 @@
     transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
 }
 
-.dashboard-nav__link img {
-    width: 29px;
-    height: 29px;
+.dashboard-nav__icon {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 34px;
+}
+
+.dashboard-nav__icon img {
+    width: 27px;
+    height: 27px;
     object-fit: contain;
     filter: grayscale(1) brightness(0.45);
+}
+
+.dashboard-nav__link--championships .dashboard-nav__icon img {
+    width: 35px;
+    height: 35px;
+}
+
+.dashboard-nav__link--settings .dashboard-nav__icon img {
+    width: 29px;
+    height: 29px;
 }
 
 .dashboard-nav__link:hover,
@@ -68,8 +87,8 @@
     color: var(--color-orange);
 }
 
-.dashboard-nav__link:hover img,
-.dashboard-nav__link.is-active img {
+.dashboard-nav__link:hover .dashboard-nav__icon img,
+.dashboard-nav__link.is-active .dashboard-nav__icon img {
     filter: invert(52%) sepia(94%) saturate(2637%) hue-rotate(346deg) brightness(103%) contrast(103%);
 }
 

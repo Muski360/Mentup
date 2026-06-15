@@ -1,0 +1,314 @@
+.champ-create {
+    min-width: 0;
+    min-height: 100vh;
+    background: #fbfbfb;
+    padding: 34px clamp(28px, 5vw, 70px) 54px;
+}
+
+.champ-create__title-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.champ-create__back {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background: #fff;
+    color: #ff5c00;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.champ-create__back::before {
+    content: "";
+    width: 11px;
+    height: 11px;
+    border-bottom: 3px solid currentColor;
+    border-left: 3px solid currentColor;
+    transform: rotate(45deg);
+    margin-left: 5px;
+}
+
+.champ-create__back:hover {
+    background: #fff3ec;
+    transform: translateX(-2px);
+}
+
+.champ-create__header h1 {
+    margin: 0;
+    color: #050505;
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.champ-create__header p {
+    margin: 17px 0 0;
+    color: var(--color-muted);
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.champ-create-card {
+    width: min(100%, 850px);
+    margin: 38px auto 0;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.24);
+    padding: 0 38px;
+}
+
+.champ-form-section {
+    border-bottom: 1px solid #dedede;
+    padding: 31px 30px 42px;
+}
+
+.champ-form-section__title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 39px;
+}
+
+.champ-form-section__title img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    filter: invert(52%) sepia(94%) saturate(2637%) hue-rotate(346deg) brightness(103%) contrast(103%);
+}
+
+.champ-form-section__title h2 {
+    margin: 0;
+    color: #ff5c00;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.champ-form-section__title p {
+    margin: 7px 0 0;
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.champ-form-grid {
+    display: grid;
+    gap: 28px 56px;
+}
+
+.champ-form-grid--basic {
+    grid-template-columns: minmax(0, 1fr) 294px;
+}
+
+.champ-form-grid--settings {
+    width: min(100%, 542px);
+    margin-left: 104px;
+    grid-template-columns: minmax(0, 190px) minmax(0, 1fr);
+    gap: 22px 12px;
+}
+
+.champ-field {
+    display: grid;
+    gap: 11px;
+    color: #090909;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.champ-field strong {
+    color: #ff2418;
+}
+
+.champ-field em {
+    color: #b1b1b1;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.champ-field input,
+.champ-field select,
+.champ-field textarea {
+    width: 100%;
+    min-height: 39px;
+    border: 1px solid #d0d0d0;
+    border-radius: 7px;
+    background: #fff;
+    color: #101010;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    outline: 0;
+    padding: 8px 13px;
+}
+
+.champ-field select {
+    appearance: auto;
+}
+
+.champ-field textarea {
+    min-height: 72px;
+    resize: vertical;
+}
+
+.champ-field--full {
+    grid-column: 1 / -1;
+}
+
+.champ-teams-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 30px;
+}
+
+.champ-teams-head .champ-form-section__title {
+    margin-bottom: 0;
+}
+
+.champ-input-mode {
+    flex: 0 0 auto;
+    display: inline-flex;
+    overflow: hidden;
+    border: 1px solid #bdbdbd;
+    border-radius: 999px;
+}
+
+.champ-input-mode button {
+    min-height: 42px;
+    border: 0;
+    background: #fff;
+    color: #111;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 20px;
+}
+
+.champ-input-mode button.is-active {
+    background: #ff690d;
+    color: #fff;
+}
+
+.champ-team-list {
+    display: grid;
+    gap: 18px;
+}
+
+.champ-team-row {
+    display: grid;
+    grid-template-columns: minmax(0, 225px) minmax(0, 1fr);
+    gap: 15px;
+}
+
+.champ-create-actions {
+    min-height: 131px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 32px 72px;
+}
+
+.champ-clear,
+.champ-submit {
+    min-height: 49px;
+    border: 0;
+    border-radius: 13px;
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+}
+
+.champ-clear {
+    min-width: 158px;
+    background: #ff2418;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.champ-submit {
+    min-width: 284px;
+    background: #ff690d;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.champ-create-alert {
+    width: min(100%, 850px);
+    display: grid;
+    gap: 6px;
+    margin: 24px auto -14px;
+    border: 1px solid rgba(255, 36, 24, 0.24);
+    border-radius: 10px;
+    background: #ffe7e5;
+    color: #c91d13;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+@media (max-width: 1080px) {
+    .champ-create-card {
+        padding-inline: 22px;
+    }
+
+    .champ-form-grid--settings {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 760px) {
+    .champ-create {
+        padding: 30px 16px 40px;
+    }
+
+    .champ-create-card {
+        padding-inline: 0;
+    }
+
+    .champ-form-section {
+        padding: 28px 20px;
+    }
+
+    .champ-form-grid--basic,
+    .champ-form-grid--settings,
+    .champ-team-row {
+        grid-template-columns: 1fr;
+    }
+
+    .champ-form-grid--settings {
+        width: 100%;
+    }
+
+    .champ-teams-head {
+        flex-direction: column;
+    }
+
+    .champ-input-mode {
+        width: 100%;
+    }
+
+    .champ-input-mode button {
+        flex: 1;
+    }
+
+    .champ-create-actions {
+        flex-direction: column-reverse;
+        padding: 28px 20px;
+    }
+
+    .champ-clear,
+    .champ-submit {
+        width: 100%;
+    }
+}

@@ -9,7 +9,7 @@
 
         <nav class="footer-nav" aria-label="Navega&ccedil;&atilde;o do rodap&eacute;">
             <a href="index.php">In&iacute;cio</a>
-            <a href="campeonatos.php">Campeonatos</a>
+            <a href="championship-list.php">Campeonatos</a>
             <a href="login.php">Login</a>
             <a href="#contato">Contato</a>
         </nav>

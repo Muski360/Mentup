@@ -107,6 +107,68 @@ if (deleteAccountModal && deleteAccountOpen) {
     });
 }
 
+const finishChampionshipModal = document.querySelector('[data-finish-championship-modal]');
+const finishChampionshipOpen = document.querySelector('[data-finish-championship-open]');
+const finishChampionshipCloseButtons = document.querySelectorAll('[data-finish-championship-close]');
+
+if (finishChampionshipModal && finishChampionshipOpen) {
+    const openFinishChampionshipModal = () => {
+        finishChampionshipModal.classList.add('is-open');
+        finishChampionshipModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+    };
+
+    const closeFinishChampionshipModal = () => {
+        finishChampionshipModal.classList.remove('is-open');
+        finishChampionshipModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        finishChampionshipOpen.focus();
+    };
+
+    finishChampionshipOpen.addEventListener('click', openFinishChampionshipModal);
+
+    finishChampionshipCloseButtons.forEach((button) => {
+        button.addEventListener('click', closeFinishChampionshipModal);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && finishChampionshipModal.classList.contains('is-open')) {
+            closeFinishChampionshipModal();
+        }
+    });
+}
+
+const championshipEditModal = document.querySelector('[data-championship-edit-modal]');
+const championshipEditOpen = document.querySelector('[data-championship-edit-open]');
+const championshipEditCloseButtons = document.querySelectorAll('[data-championship-edit-close]');
+
+if (championshipEditModal && championshipEditOpen) {
+    const openChampionshipEditModal = () => {
+        championshipEditModal.classList.add('is-open');
+        championshipEditModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+    };
+
+    const closeChampionshipEditModal = () => {
+        championshipEditModal.classList.remove('is-open');
+        championshipEditModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        championshipEditOpen.focus();
+    };
+
+    championshipEditOpen.addEventListener('click', openChampionshipEditModal);
+
+    championshipEditCloseButtons.forEach((button) => {
+        button.addEventListener('click', closeChampionshipEditModal);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && championshipEditModal.classList.contains('is-open')) {
+            closeChampionshipEditModal();
+        }
+    });
+}
+
 const snacks = document.querySelectorAll('[data-snack]');
 
 snacks.forEach((snack) => {
@@ -118,3 +180,49 @@ snacks.forEach((snack) => {
         }, 220);
     }, 3000);
 });
+
+const championshipForm = document.querySelector('[data-championship-form]');
+
+if (championshipForm) {
+    const teamCountInput = championshipForm.querySelector('[data-team-count]');
+    const teamList = championshipForm.querySelector('[data-team-list]');
+
+    const createTeamRow = (index) => {
+        const row = document.createElement('div');
+        row.className = 'champ-team-row';
+        row.innerHTML = `
+            <label class="champ-field">
+                <span>Time ${index + 1}:</span>
+                <input name="team_names[]" type="text" required>
+            </label>
+            <label class="champ-field">
+                <span>Jogadores:</span>
+                <input name="team_players[]" type="text" placeholder="Ex: Ana, Bruno">
+            </label>
+        `;
+
+        return row;
+    };
+
+    const syncTeamRows = () => {
+        const count = Math.max(2, Math.min(64, Number.parseInt(teamCountInput.value, 10) || 2));
+        const rows = Array.from(teamList.querySelectorAll('.champ-team-row'));
+
+        if (String(count) !== teamCountInput.value) {
+            teamCountInput.value = String(count);
+        }
+
+        while (rows.length > count) {
+            rows.pop().remove();
+        }
+
+        for (let index = rows.length; index < count; index += 1) {
+            teamList.appendChild(createTeamRow(index));
+        }
+    };
+
+    teamCountInput.addEventListener('input', syncTeamRows);
+    championshipForm.addEventListener('reset', () => {
+        window.setTimeout(syncTeamRows, 0);
+    });
+}

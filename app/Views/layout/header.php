@@ -49,7 +49,7 @@ $assetVersion = static function (string $asset) use ($publicPath): string {
             <nav class="primary-nav" id="primary-navigation" aria-label="Navega&ccedil;&atilde;o principal">
                 <a href="index.php">In&iacute;cio</a>
                 <a href="#recursos">Recursos</a>
-                <a href="campeonatos.php">Campeonatos</a>
+                <a href="championship-list.php">Campeonatos</a>
                 <a href="#contato">Contato</a>
             </nav>
 
