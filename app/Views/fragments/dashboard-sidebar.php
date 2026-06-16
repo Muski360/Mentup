@@ -17,19 +17,19 @@ $menuItems = [
         'key' => 'dashboard',
         'label' => 'Dashboard',
         'href' => 'dashboard.php',
-        'icon' => 'assets/img/icon/home.svg',
+        'icon' => 'layout-dashboard',
     ],
     [
         'key' => 'championships',
         'label' => 'Campeonatos',
         'href' => 'championship-list.php',
-        'icon' => 'assets/img/icon/icon_trophy.svg',
+        'icon' => 'trophy',
     ],
     [
         'key' => 'settings',
         'label' => 'Configura&ccedil;&atilde;o',
         'href' => 'settings.php',
-        'icon' => 'assets/img/icon/settings.svg',
+        'icon' => 'settings',
     ],
 ];
 ?>
@@ -44,7 +44,7 @@ $menuItems = [
             <a class="dashboard-nav__link dashboard-nav__link--<?= htmlspecialchars($item['key'], ENT_QUOTES, 'UTF-8') ?><?= $activeMenu === $item['key'] ? ' is-active' : '' ?>"
                 href="<?= htmlspecialchars($item['href'], ENT_QUOTES, 'UTF-8') ?>">
                 <span class="dashboard-nav__icon">
-                    <img src="<?= $basePath . $item['icon'] ?>" alt="" aria-hidden="true">
+                    <?= mentupIcon($item['icon']) ?>
                 </span>
                 <span><?= $item['label'] ?></span>
             </a>
@@ -53,7 +53,7 @@ $menuItems = [
 
     <div class="dashboard-sidebar__footer">
         <a class="dashboard-help" href="#">
-            <img src="<?= $basePath ?>assets/img/icon/help.svg" alt="" aria-hidden="true">
+            <?= mentupIcon('circle-question-mark') ?>
             <span>Ajuda e Suporte</span>
         </a>
 
@@ -61,7 +61,7 @@ $menuItems = [
             <span class="dashboard-user__avatar"><?= htmlspecialchars($dashboardInitials, ENT_QUOTES, 'UTF-8') ?></span>
             <span class="dashboard-user__name"><?= htmlspecialchars($dashboardUserName, ENT_QUOTES, 'UTF-8') ?></span>
             <button class="dashboard-user__logout" type="button" aria-label="Sair da conta" data-logout-open>
-                <img src="<?= $basePath ?>assets/img/icon/logout.svg" alt="" aria-hidden="true">
+                <?= mentupIcon('log-out') ?>
             </button>
         </div>
     </div>

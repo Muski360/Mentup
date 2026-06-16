@@ -19,7 +19,7 @@ require __DIR__ . '/layout/header.php';
             <div class="dashboard-stats" aria-label="Indicadores principais">
                 <?php foreach ($dashboardStats as $stat): ?>
                     <article class="stat-card">
-                        <img src="<?= htmlspecialchars($stat['icon'], ENT_QUOTES, 'UTF-8') ?>" alt="" aria-hidden="true">
+                        <?= mentupIcon($stat['icon']) ?>
                         <div class="stat-card__copy">
                             <h2><?= htmlspecialchars($stat['label'], ENT_QUOTES, 'UTF-8') ?></h2>
                             <strong><?= htmlspecialchars((string) $stat['value'], ENT_QUOTES, 'UTF-8') ?></strong>

@@ -33,19 +33,23 @@ require __DIR__ . '/layout/header.php';
         <header class="championship-detail__header">
             <div>
                 <div class="championship-detail__title-row">
-                    <a class="championship-detail__back" href="championship-list.php" aria-label="Voltar para campeonatos"></a>
+                    <a class="championship-detail__back" href="championship-list.php" aria-label="Voltar para campeonatos">
+                        <?= mentupIcon('arrow-left') ?>
+                    </a>
                     <h1><?= htmlspecialchars($championship['name'], ENT_QUOTES, 'UTF-8') ?></h1>
-                    <button class="championship-detail__more" type="button" aria-label="Editar campeonato" data-championship-edit-open>...</button>
+                    <button class="championship-detail__more" type="button" aria-label="Editar campeonato" data-championship-edit-open>
+                        <?= mentupIcon('ellipsis') ?>
+                    </button>
                     <button class="championship-detail__teams-edit" type="button" data-team-editor-open>Editar times</button>
                 </div>
 
                 <div class="championship-detail__meta" aria-label="Informacoes do campeonato">
                     <span>
-                        <img src="assets/img/icon/volleyball.svg" alt="" aria-hidden="true">
+                        <?= mentupIcon('volleyball') ?>
                         <?= htmlspecialchars($championship['modality'], ENT_QUOTES, 'UTF-8') ?>
                     </span>
                     <span>
-                        <img src="assets/img/icon/calendar.svg" alt="" aria-hidden="true">
+                        <?= mentupIcon('calendar-days') ?>
                         Criado em <?= htmlspecialchars($championship['created_date'] ?: '--/--/----', ENT_QUOTES, 'UTF-8') ?>
                     </span>
                 </div>
@@ -58,7 +62,7 @@ require __DIR__ . '/layout/header.php';
                     <h2>Resumo do campeonato</h2>
                     <div class="championship-summary__metric">
                         <span class="championship-summary__icon">
-                            <img src="assets/img/icon/team.svg" alt="" aria-hidden="true">
+                            <?= mentupIcon('users-round') ?>
                         </span>
                         <div>
                             <strong><?= htmlspecialchars((string) $championship['total_teams'], ENT_QUOTES, 'UTF-8') ?></strong>
@@ -71,7 +75,7 @@ require __DIR__ . '/layout/header.php';
                     <article class="championship-panel">
                         <header class="championship-panel__header">
                             <div>
-                                <img src="assets/img/icon/team.svg" alt="" aria-hidden="true">
+                                <?= mentupIcon('users-round') ?>
                                 <h2><?= $isRoundRobin ? 'Todos contra todos' : 'Fase de grupos' ?></h2>
                             </div>
                             <button type="button" data-detail-modal-open="standings">Ver todos</button>
@@ -153,7 +157,7 @@ require __DIR__ . '/layout/header.php';
                     <article class="championship-panel">
                         <header class="championship-panel__header">
                             <div>
-                                <img src="assets/img/icon/settings.svg" alt="" aria-hidden="true">
+                                <?= mentupIcon('git-fork') ?>
                                 <h2>Chaveamento</h2>
                             </div>
                             <button type="button" data-detail-modal-open="bracket">Ver inteiro</button>
@@ -203,47 +207,47 @@ require __DIR__ . '/layout/header.php';
                     <button class="championship-finish is-disabled" type="button" disabled>Campeonato finalizado</button>
                 <?php else: ?>
                     <button class="championship-finish" type="button" data-finish-championship-open>
-                        <img src="assets/img/icon/icon_trophy.svg" alt="" aria-hidden="true">
+                        <?= mentupIcon('trophy') ?>
                         Encerrar campeonato
                     </button>
                 <?php endif; ?>
 
                 <a class="championship-result" href="championship-results.php?id=<?= urlencode($championship['id']) ?>">
-                    <img src="assets/img/icon/home_trophy.svg" alt="" aria-hidden="true">
+                    <?= mentupIcon('clipboard-check') ?>
                     Lancar resultado
                 </a>
 
                 <div class="championship-side__about">
                     <h2>
-                        <span>i</span>
+                        <span><?= mentupIcon('info') ?></span>
                         Sobre o campeonato
                     </h2>
 
                     <dl>
                         <div>
                             <dt>
-                                <img src="assets/img/icon/calendar.svg" alt="" aria-hidden="true">
+                                <?= mentupIcon('calendar-days') ?>
                                 Criado em
                             </dt>
                             <dd><?= htmlspecialchars($championship['created_date'] ?: '--/--/----', ENT_QUOTES, 'UTF-8') ?></dd>
                         </div>
                         <div>
                             <dt>
-                                <img src="assets/img/icon/team.svg" alt="" aria-hidden="true">
+                                <?= mentupIcon('users-round') ?>
                                 Organizador
                             </dt>
                             <dd><?= htmlspecialchars($dashboardUserName, ENT_QUOTES, 'UTF-8') ?></dd>
                         </div>
                         <div>
                             <dt>
-                                <img src="assets/img/icon/volleyball.svg" alt="" aria-hidden="true">
+                                <?= mentupIcon('volleyball') ?>
                                 Modalidade
                             </dt>
                             <dd><?= htmlspecialchars($championship['modality'], ENT_QUOTES, 'UTF-8') ?></dd>
                         </div>
                         <div>
                             <dt>
-                                <img src="assets/img/icon/icon_trophy.svg" alt="" aria-hidden="true">
+                                <?= mentupIcon('trophy') ?>
                                 Formato
                             </dt>
                             <dd><?= htmlspecialchars($championship['format_label'], ENT_QUOTES, 'UTF-8') ?></dd>
@@ -263,7 +267,9 @@ require __DIR__ . '/layout/header.php';
                 <h2 id="team-editor-title">Editar times</h2>
                 <p>Altere nomes, jogadores e fun&ccedil;&otilde;es dos atletas.</p>
             </div>
-            <button type="button" aria-label="Fechar" data-team-editor-close>&times;</button>
+            <button type="button" aria-label="Fechar" data-team-editor-close>
+                <?= mentupIcon('x') ?>
+            </button>
         </header>
 
         <?php if (empty($championshipStructure['teams'])): ?>
@@ -370,7 +376,9 @@ require __DIR__ . '/layout/header.php';
                 <h2 id="standings-modal-title"><?= $isRoundRobin ? 'Tabela todos contra todos' : 'Tabelas da fase de grupos' ?></h2>
                 <p><?= htmlspecialchars($championship['name'], ENT_QUOTES, 'UTF-8') ?></p>
             </div>
-            <button type="button" aria-label="Fechar" data-detail-modal-close>&times;</button>
+            <button type="button" aria-label="Fechar" data-detail-modal-close>
+                <?= mentupIcon('x') ?>
+            </button>
         </header>
 
         <div class="championship-data-modal__body">
@@ -454,7 +462,9 @@ require __DIR__ . '/layout/header.php';
                 <h2 id="bracket-modal-title">Chaveamento</h2>
                 <p><?= htmlspecialchars($championship['name'], ENT_QUOTES, 'UTF-8') ?></p>
             </div>
-            <button type="button" aria-label="Fechar" data-detail-modal-close>&times;</button>
+            <button type="button" aria-label="Fechar" data-detail-modal-close>
+                <?= mentupIcon('x') ?>
+            </button>
         </header>
 
         <div class="championship-data-modal__body">
@@ -505,7 +515,9 @@ require __DIR__ . '/layout/header.php';
                 <h2 id="matches-modal-title">Partidas</h2>
                 <p><?= htmlspecialchars($championship['name'], ENT_QUOTES, 'UTF-8') ?></p>
             </div>
-            <button type="button" aria-label="Fechar" data-detail-modal-close>&times;</button>
+            <button type="button" aria-label="Fechar" data-detail-modal-close>
+                <?= mentupIcon('x') ?>
+            </button>
         </header>
 
         <div class="championship-data-modal__body">
@@ -513,7 +525,7 @@ require __DIR__ . '/layout/header.php';
                 <div class="championship-recent championship-recent--modal">
                     <?php foreach ($championshipStructure['all_matches'] as $match): ?>
                         <div class="championship-recent__row">
-                            <img src="assets/img/icon/volleyball.svg" alt="" aria-hidden="true">
+                            <?= mentupIcon('volleyball') ?>
                             <span><?= htmlspecialchars($match['team_a_name'], ENT_QUOTES, 'UTF-8') ?></span>
                             <strong><?= htmlspecialchars($match['score'], ENT_QUOTES, 'UTF-8') ?></strong>
                             <span><?= htmlspecialchars($match['team_b_name'], ENT_QUOTES, 'UTF-8') ?></span>

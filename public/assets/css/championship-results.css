@@ -43,24 +43,28 @@
     gap: 8px;
 }
 
-.results-header__meta img {
+.results-header__meta .app-icon {
     width: 17px;
     height: 17px;
-    object-fit: contain;
-    filter: grayscale(1) brightness(0.45);
+    color: #555c66;
 }
 
 .results-header__meta button {
     min-width: 38px;
     height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid #d8dce2;
     border-radius: 8px;
     background: #fff;
     color: #202027;
-    font: inherit;
-    font-size: 16px;
-    font-weight: 800;
     cursor: pointer;
+}
+
+.results-header__meta button .app-icon {
+    width: 19px;
+    height: 19px;
 }
 
 .results-layout {
@@ -101,11 +105,10 @@
     gap: 11px;
 }
 
-.results-card__header img {
+.results-card__header .app-icon {
     width: 22px;
     height: 22px;
-    object-fit: contain;
-    filter: invert(43%) sepia(95%) saturate(3307%) hue-rotate(352deg) brightness(103%) contrast(103%);
+    color: #ff3b18;
 }
 
 .results-card__header h2 {
@@ -254,11 +257,9 @@
     color: #fff;
 }
 
-.results-action img {
+.results-action .app-icon {
     width: 14px;
     height: 14px;
-    object-fit: contain;
-    filter: invert(43%) sepia(95%) saturate(3307%) hue-rotate(352deg) brightness(103%) contrast(103%);
 }
 
 .results-action.is-disabled {
@@ -300,11 +301,10 @@
     background: #fff8f4;
 }
 
-.results-side__badge img {
+.results-side__badge .app-icon {
     width: 38px;
     height: 38px;
-    object-fit: contain;
-    filter: invert(43%) sepia(95%) saturate(3307%) hue-rotate(352deg) brightness(103%) contrast(103%);
+    color: #ff3b18;
 }
 
 .results-side h2 {
@@ -369,11 +369,10 @@
     gap: 10px;
 }
 
-.results-summary dt img {
+.results-summary dt .app-icon {
     width: 17px;
     height: 17px;
-    object-fit: contain;
-    filter: grayscale(1) brightness(0.45);
+    color: #4b535f;
 }
 
 .results-summary dd {
@@ -425,13 +424,9 @@
     color: #202027;
 }
 
-.results-back::before {
-    content: "";
-    width: 9px;
-    height: 9px;
-    border-bottom: 2px solid currentColor;
-    border-left: 2px solid currentColor;
-    transform: rotate(45deg);
+.results-back .app-icon {
+    width: 17px;
+    height: 17px;
 }
 
 .results-finish {
@@ -441,11 +436,9 @@
     cursor: pointer;
 }
 
-.results-finish img {
+.results-finish .app-icon {
     width: 17px;
     height: 17px;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
 }
 
 .results-finish.is-disabled {
@@ -544,6 +537,11 @@
     cursor: pointer;
 }
 
+.match-result-modal__header button .app-icon {
+    width: 20px;
+    height: 20px;
+}
+
 .match-result-form {
     display: grid;
 }
@@ -581,11 +579,10 @@
     background: #fff8f4;
 }
 
-.match-result-teams img {
+.match-result-teams .app-icon {
     width: 25px;
     height: 25px;
-    object-fit: contain;
-    filter: invert(43%) sepia(95%) saturate(3307%) hue-rotate(352deg) brightness(103%) contrast(103%);
+    color: #ff3b18;
 }
 
 .match-result-teams strong {

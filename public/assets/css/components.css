@@ -46,21 +46,19 @@
     font-weight: 600;
 }
 
-.btn--large img {
+.btn--large .app-icon {
     width: 31px;
     height: 31px;
-    filter: brightness(0) invert(1);
 }
 
 .btn__icon-dark {
     width: 32px;
     height: 32px;
-    object-fit: contain;
-    filter: none;
+    color: #111;
 }
 
 .btn--large .btn__icon-dark {
-    filter: none;
+    color: #111;
 }
 
 .btn--whatsapp {
@@ -73,7 +71,7 @@
     font-weight: 700;
 }
 
-.btn--whatsapp img {
+.btn--whatsapp .app-icon {
     width: 19px;
     height: 19px;
 }

@@ -38,7 +38,7 @@ require __DIR__ . '/layout/header.php';
             </div>
 
             <a class="championships-create" href="create-championship.php">
-                <span aria-hidden="true">+</span>
+                <?= mentupIcon('plus') ?>
                 Novo campeonato
             </a>
         </header>

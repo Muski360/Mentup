@@ -47,15 +47,17 @@ require __DIR__ . '/layout/header.php';
                 <h1>Lan&ccedil;ar resultado</h1>
                 <div class="results-header__meta" aria-label="Dados do campeonato">
                     <span>
-                        <img src="assets/img/icon/icon_trophy.svg" alt="" aria-hidden="true">
+                        <?= mentupIcon('trophy') ?>
                         <?= htmlspecialchars($championship['name'], ENT_QUOTES, 'UTF-8') ?>
                     </span>
                     <span aria-hidden="true">&bull;</span>
                     <span>
-                        <img src="assets/img/icon/volleyball.svg" alt="" aria-hidden="true">
+                        <?= mentupIcon('volleyball') ?>
                         <?= htmlspecialchars($championship['modality'], ENT_QUOTES, 'UTF-8') ?>
                     </span>
-                    <button type="button" aria-label="Mais op&ccedil;&otilde;es">...</button>
+                    <button type="button" aria-label="Mais op&ccedil;&otilde;es">
+                        <?= mentupIcon('ellipsis') ?>
+                    </button>
                 </div>
                 <p>Registre e edite os resultados das partidas para manter a competi&ccedil;&atilde;o sempre atualizada.</p>
             </div>
@@ -66,7 +68,7 @@ require __DIR__ . '/layout/header.php';
                 <article class="results-card">
                     <header class="results-card__header">
                         <div>
-                            <img src="assets/img/icon/check.svg" alt="" aria-hidden="true">
+                            <?= mentupIcon('circle-check') ?>
                             <h2>Resultados lan&ccedil;ados</h2>
                             <span><?= count($completedMatches) ?></span>
                         </div>
@@ -109,7 +111,7 @@ require __DIR__ . '/layout/header.php';
                                     <?php else: ?>
                                         <button class="results-action" type="button"
                                             data-match-result-open="<?= htmlspecialchars($match['id'], ENT_QUOTES, 'UTF-8') ?>">
-                                            <img src="assets/img/icon/edit.svg" alt="" aria-hidden="true">
+                                            <?= mentupIcon('pencil') ?>
                                             Editar
                                         </button>
                                     <?php endif; ?>
@@ -122,7 +124,7 @@ require __DIR__ . '/layout/header.php';
                 <article class="results-card">
                     <header class="results-card__header">
                         <div>
-                            <img src="assets/img/icon/clock-lines.svg" alt="" aria-hidden="true">
+                            <?= mentupIcon('clock') ?>
                             <h2>Partidas sem resultado</h2>
                             <span><?= count($pendingMatches) ?></span>
                         </div>
@@ -175,7 +177,7 @@ require __DIR__ . '/layout/header.php';
 
             <aside class="results-side">
                 <div class="results-side__badge">
-                    <img src="assets/img/icon/volleyball.svg" alt="" aria-hidden="true">
+                    <?= mentupIcon('volleyball') ?>
                 </div>
                 <h2><?= htmlspecialchars($championship['name'], ENT_QUOTES, 'UTF-8') ?></h2>
                 <p><?= htmlspecialchars($championship['modality'], ENT_QUOTES, 'UTF-8') ?></p>
@@ -185,21 +187,21 @@ require __DIR__ . '/layout/header.php';
                     <dl>
                         <div>
                             <dt>
-                                <img src="assets/img/icon/calendar.svg" alt="" aria-hidden="true">
+                                <?= mentupIcon('calendar-days') ?>
                                 Total de partidas
                             </dt>
                             <dd><?= htmlspecialchars((string) $championship['total_matches'], ENT_QUOTES, 'UTF-8') ?></dd>
                         </div>
                         <div>
                             <dt>
-                                <img src="assets/img/icon/check.svg" alt="" aria-hidden="true">
+                                <?= mentupIcon('circle-check') ?>
                                 Resultados lan&ccedil;ados
                             </dt>
                             <dd><?= htmlspecialchars((string) $championship['completed_matches'], ENT_QUOTES, 'UTF-8') ?></dd>
                         </div>
                         <div>
                             <dt>
-                                <img src="assets/img/icon/clock-lines.svg" alt="" aria-hidden="true">
+                                <?= mentupIcon('clock') ?>
                                 Pendentes
                             </dt>
                             <dd><?= htmlspecialchars((string) $championship['pending_matches'], ENT_QUOTES, 'UTF-8') ?></dd>
@@ -216,12 +218,15 @@ require __DIR__ . '/layout/header.php';
 
                 <div class="results-quick-actions">
                     <h3>A&ccedil;&otilde;es r&aacute;pidas</h3>
-                    <a class="results-back" href="championship.php?id=<?= urlencode($championship['id']) ?>">Voltar</a>
+                    <a class="results-back" href="championship.php?id=<?= urlencode($championship['id']) ?>">
+                        <?= mentupIcon('arrow-left') ?>
+                        Voltar
+                    </a>
                     <?php if ($isFinished): ?>
                         <button class="results-finish is-disabled" type="button" disabled>Campeonato finalizado</button>
                     <?php else: ?>
                         <button class="results-finish" type="button" data-finish-championship-open>
-                            <img src="assets/img/icon/icon_trophy.svg" alt="" aria-hidden="true">
+                            <?= mentupIcon('trophy') ?>
                             Encerrar campeonato
                         </button>
                     <?php endif; ?>
@@ -244,7 +249,9 @@ require __DIR__ . '/layout/header.php';
                     <h2 id="match-result-title-<?= htmlspecialchars($match['id'], ENT_QUOTES, 'UTF-8') ?>">Lan&ccedil;ar resultado</h2>
                     <p><?= htmlspecialchars($match['phase_label'], ENT_QUOTES, 'UTF-8') ?></p>
                 </div>
-                <button type="button" aria-label="Fechar" data-match-result-close>&times;</button>
+                <button type="button" aria-label="Fechar" data-match-result-close>
+                    <?= mentupIcon('x') ?>
+                </button>
             </header>
 
             <form class="match-result-form" action="championship-results.php?id=<?= urlencode($championship['id']) ?>" method="post">
@@ -253,12 +260,12 @@ require __DIR__ . '/layout/header.php';
 
                 <div class="match-result-teams">
                     <div>
-                        <span><img src="assets/img/icon/volleyball.svg" alt="" aria-hidden="true"></span>
+                        <span><?= mentupIcon('volleyball') ?></span>
                         <strong><?= htmlspecialchars($match['team_a_name'], ENT_QUOTES, 'UTF-8') ?></strong>
                     </div>
                     <b>vs</b>
                     <div>
-                        <span><img src="assets/img/icon/volleyball.svg" alt="" aria-hidden="true"></span>
+                        <span><?= mentupIcon('volleyball') ?></span>
                         <strong><?= htmlspecialchars($match['team_b_name'], ENT_QUOTES, 'UTF-8') ?></strong>
                     </div>
                 </div>

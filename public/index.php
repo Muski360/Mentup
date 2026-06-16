@@ -14,26 +14,26 @@ require __DIR__ . '/../app/Views/layout/header.php';
 
             <div class="hero__actions">
                 <a class="btn btn--primary btn--large" href="create-championship.php">
-                    <img src="assets/img/icon/home_trophy.svg" alt="" aria-hidden="true">
+                    <?= mentupIcon('trophy') ?>
                     Criar um campeonato
                 </a>
                 <a class="btn btn--outline btn--large" href="#como-funciona">
-                    <img class="btn__icon-dark" src="assets/img/icon/camera.svg" alt="" aria-hidden="true">
+                    <?= mentupIcon('circle-play', 'app-icon btn__icon-dark') ?>
                     Ver tutorial
                 </a>
             </div>
 
             <div class="hero-benefits" aria-label="Beneficios principais">
                 <div class="hero-benefit">
-                    <img src="assets/img/icon/home_trophy.svg" alt="" aria-hidden="true">
+                    <?= mentupIcon('trophy') ?>
                     <span>Crie do<br>seu jeito.</span>
                 </div>
                 <div class="hero-benefit">
-                    <img src="assets/img/icon/dumbbell.svg" alt="" aria-hidden="true">
+                    <?= mentupIcon('dumbbell') ?>
                     <span>Feito para<br>atletas.</span>
                 </div>
                 <div class="hero-benefit">
-                    <img src="assets/img/icon/clock-lines.svg" alt="" aria-hidden="true">
+                    <?= mentupIcon('clock') ?>
                     <span>F&aacute;cil, r&aacute;pido e<br>inteligente.</span>
                 </div>
             </div>
@@ -48,20 +48,20 @@ require __DIR__ . '/../app/Views/layout/header.php';
 <section class="features" id="recursos" aria-label="Recursos da plataforma">
     <div class="container feature-grid">
         <article class="feature-card">
-            <img src="assets/img/icon/check.svg" alt="" aria-hidden="true">
+            <?= mentupIcon('circle-check') ?>
             <h2>F&aacute;cil de usar</h2>
             <p>Enquanto voc&ecirc; perde tempo fazendo planilhas e se perdendo em papel, a Mentup facilita tudo para
                 voc&ecirc;.</p>
         </article>
 
         <article class="feature-card">
-            <img src="assets/img/icon/tag.svg" alt="" aria-hidden="true">
+            <?= mentupIcon('badge-dollar-sign') ?>
             <h2>Use gratuitamente</h2>
             <p>Use a Mentup agora gratuitamente, sem a necessidade de cadastrar seus dados financeiros.</p>
         </article>
 
         <article class="feature-card">
-            <img src="assets/img/icon/medal.svg" alt="" aria-hidden="true">
+            <?= mentupIcon('medal') ?>
             <h2>Tabelas e campeonatos</h2>
             <p>Classifica&ccedil;&otilde;es e chaveamento feito automaticamente, com suporte a diferentes esportes.</p>
         </article>
@@ -79,11 +79,11 @@ require __DIR__ . '/../app/Views/layout/header.php';
                     times, promovendo um ambiente esportivo mais organizado, justo e transparente.</p>
 
                 <ul class="check-list">
-                    <li>Cria&ccedil;&atilde;o de campeonatos de esportes</li>
-                    <li>Cadastro de times e jogadores</li>
-                    <li>Fases de grupos e chaveamento autom&aacute;tico</li>
-                    <li>Resultados e classifica&ccedil;&atilde;o autom&aacute;ticos</li>
-                    <li>Login e cria&ccedil;&atilde;o de conta para organizadores</li>
+                    <li><?= mentupIcon('check') ?>Cria&ccedil;&atilde;o de campeonatos de esportes</li>
+                    <li><?= mentupIcon('check') ?>Cadastro de times e jogadores</li>
+                    <li><?= mentupIcon('check') ?>Fases de grupos e chaveamento autom&aacute;tico</li>
+                    <li><?= mentupIcon('check') ?>Resultados e classifica&ccedil;&atilde;o autom&aacute;ticos</li>
+                    <li><?= mentupIcon('check') ?>Login e cria&ccedil;&atilde;o de conta para organizadores</li>
                 </ul>
             </div>
 
@@ -103,7 +103,7 @@ require __DIR__ . '/../app/Views/layout/header.php';
                 <p>Est&aacute; com d&uacute;vidas?</p>
                 <h2>Fale com nossa equipe!</h2>
                 <a class="btn btn--whatsapp" href="https://wa.me/5519971344281" target="_blank" rel="noopener">
-                    <img src="assets/img/icon/whatsapp-753x753.png" alt="" aria-hidden="true">
+                    <?= mentupIcon('message-circle') ?>
                     Conversar pelo WhatsApp
                 </a>
             </div>

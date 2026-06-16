@@ -66,11 +66,10 @@
     line-height: 1.18;
 }
 
-.hero-benefit img {
+.hero-benefit .app-icon {
     width: 40px;
     height: 40px;
-    object-fit: contain;
-    filter: invert(54%) sepia(96%) saturate(2461%) hue-rotate(344deg) brightness(102%) contrast(102%);
+    color: var(--color-orange);
 }
 
 .hero__media {
@@ -102,11 +101,10 @@
     box-shadow: var(--shadow-card);
 }
 
-.feature-card img {
+.feature-card .app-icon {
     width: 48px;
     height: 48px;
-    object-fit: contain;
-    filter: invert(27%) sepia(94%) saturate(2780%) hue-rotate(221deg) brightness(91%) contrast(99%);
+    color: var(--color-blue);
 }
 
 .feature-card h2 {
@@ -167,20 +165,20 @@
 }
 
 .check-list li {
-    position: relative;
-    padding-left: 32px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
 }
 
 .check-list li::before {
-    content: "";
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    width: 14px;
-    height: 9px;
-    border-left: 3px solid var(--color-blue);
-    border-bottom: 3px solid var(--color-blue);
-    transform: rotate(-45deg);
+    content: none;
+}
+
+.check-list .app-icon {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    color: var(--color-blue);
 }
 
 .video-preview {

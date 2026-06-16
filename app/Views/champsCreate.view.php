@@ -8,7 +8,9 @@ require __DIR__ . '/layout/header.php';
     <section class="champ-create" aria-label="Criar campeonato">
         <header class="champ-create__header">
             <div class="champ-create__title-row">
-                <a class="champ-create__back" href="championship-list.php" aria-label="Voltar para campeonatos"></a>
+                <a class="champ-create__back" href="championship-list.php" aria-label="Voltar para campeonatos">
+                    <?= mentupIcon('arrow-left') ?>
+                </a>
                 <h1>Crie seu campeonato!</h1>
             </div>
             <p>Preencha os dados para criar seu campeonato.</p>
@@ -25,7 +27,7 @@ require __DIR__ . '/layout/header.php';
         <form class="champ-create-card" action="create-championship.php" method="post" data-championship-form>
             <section class="champ-form-section">
                 <header class="champ-form-section__title">
-                    <img src="assets/img/icon/info.svg" alt="" aria-hidden="true">
+                    <?= mentupIcon('info') ?>
                     <h2>Informa&ccedil;&otilde;es b&aacute;sicas</h2>
                 </header>
 
@@ -51,7 +53,7 @@ require __DIR__ . '/layout/header.php';
 
             <section class="champ-form-section">
                 <header class="champ-form-section__title">
-                    <img src="assets/img/icon/settings.svg" alt="" aria-hidden="true">
+                    <?= mentupIcon('settings') ?>
                     <h2>Configura&ccedil;&otilde;es do campeonato</h2>
                 </header>
 
@@ -93,7 +95,7 @@ require __DIR__ . '/layout/header.php';
             <section class="champ-form-section">
                 <div class="champ-teams-head">
                     <header class="champ-form-section__title">
-                        <img src="assets/img/icon/team.svg" alt="" aria-hidden="true">
+                        <?= mentupIcon('users-round') ?>
                         <div>
                             <h2>Times do campeonato</h2>
                             <p>Voc&ecirc; pode editar a qualquer momento.</p>

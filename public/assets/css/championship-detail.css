@@ -30,14 +30,19 @@
 .championship-detail__more {
     min-width: 48px;
     height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid #d8dce2;
     border-radius: 9px;
     background: #fff;
     color: #202027;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 1;
     cursor: pointer;
+}
+
+.championship-detail__more .app-icon {
+    width: 21px;
+    height: 21px;
 }
 
 .championship-detail__teams-edit {
@@ -69,14 +74,9 @@
     transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.championship-detail__back::before {
-    content: "";
-    width: 11px;
-    height: 11px;
-    border-bottom: 3px solid currentColor;
-    border-left: 3px solid currentColor;
-    transform: rotate(45deg);
-    margin-left: 5px;
+.championship-detail__back .app-icon {
+    width: 22px;
+    height: 22px;
 }
 
 .championship-detail__back:hover {
@@ -101,12 +101,11 @@
     font-weight: 600;
 }
 
-.championship-detail__meta img,
-.championship-side dt img {
+.championship-detail__meta .app-icon,
+.championship-side dt .app-icon {
     width: 18px;
     height: 18px;
-    object-fit: contain;
-    filter: grayscale(1) brightness(0.35);
+    color: #555c66;
 }
 
 .championship-detail__layout {
@@ -165,11 +164,10 @@
     background: #fff9f6;
 }
 
-.championship-summary__icon img {
+.championship-summary__icon .app-icon {
     width: 31px;
     height: 31px;
-    object-fit: contain;
-    filter: invert(52%) sepia(94%) saturate(2637%) hue-rotate(346deg) brightness(103%) contrast(103%);
+    color: var(--color-orange);
 }
 
 .championship-summary__metric strong {
@@ -215,11 +213,10 @@
     gap: 13px;
 }
 
-.championship-panel__header img {
+.championship-panel__header .app-icon {
     width: 24px;
     height: 24px;
-    object-fit: contain;
-    filter: invert(52%) sepia(94%) saturate(2637%) hue-rotate(346deg) brightness(103%) contrast(103%);
+    color: var(--color-orange);
 }
 
 .championship-panel__header h2 {
@@ -407,11 +404,10 @@
     font-weight: 600;
 }
 
-.championship-recent__row img {
+.championship-recent__row .app-icon {
     width: 18px;
     height: 18px;
-    object-fit: contain;
-    filter: invert(52%) sepia(94%) saturate(2637%) hue-rotate(346deg) brightness(103%) contrast(103%);
+    color: var(--color-orange);
 }
 
 .championship-recent__row strong {
@@ -496,19 +492,10 @@
     text-decoration: none;
 }
 
-.championship-finish img,
-.championship-result img {
+.championship-finish .app-icon,
+.championship-result .app-icon {
     width: 22px;
     height: 22px;
-    object-fit: contain;
-}
-
-.championship-finish img {
-    filter: brightness(0) invert(1);
-}
-
-.championship-result img {
-    filter: invert(43%) sepia(95%) saturate(3307%) hue-rotate(352deg) brightness(103%) contrast(103%);
 }
 
 .championship-side__about {
@@ -536,10 +523,11 @@
     border-radius: 50%;
     background: #fff1ec;
     color: #ff5c00;
-    font-size: 21px;
-    font-style: italic;
-    font-weight: 800;
-    line-height: 1;
+}
+
+.championship-side__about h2 span .app-icon {
+    width: 18px;
+    height: 18px;
 }
 
 .championship-side dl {
@@ -687,6 +675,12 @@
     font-size: 28px;
     line-height: 1;
     cursor: pointer;
+}
+
+.team-editor-modal__header button .app-icon,
+.championship-data-modal__header button .app-icon {
+    width: 20px;
+    height: 20px;
 }
 
 .team-editor {

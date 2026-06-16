@@ -33,6 +33,12 @@ $scriptFile = $publicPath . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR
 $scriptVersion = is_file($scriptFile) ? '?v=' . filemtime($scriptFile) : '';
 ?>
 <script src="<?= $basePath ?>assets/js/script.js<?= $scriptVersion ?>"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>
+    if (window.lucide) {
+        window.lucide.createIcons();
+    }
+</script>
 </body>
 
 </html>

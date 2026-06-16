@@ -52,12 +52,12 @@ require __DIR__ . '/layout/header.php';
                 </div>
 
                 <button class="settings-edit" type="button" aria-label="Editar perfil">
-                    <img src="assets/img/icon/edit.svg" alt="" aria-hidden="true">
+                    <?= mentupIcon('pencil') ?>
                 </button>
             </div>
 
             <button class="settings-logout" type="button" aria-label="Sair da conta" data-logout-open>
-                <img src="assets/img/icon/logout.svg" alt="" aria-hidden="true">
+                <?= mentupIcon('log-out') ?>
             </button>
         </header>
 

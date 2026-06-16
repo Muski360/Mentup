@@ -39,19 +39,19 @@ class DashboardController
                 'label' => 'Campeonatos',
                 'value' => $stats['total_championships'],
                 'detail' => $stats['total_championships_month'] . ' criados no &uacute;ltimo m&ecirc;s.',
-                'icon' => 'assets/img/icon/home_trophy.svg',
+                'icon' => 'trophy',
             ],
             [
                 'label' => 'Times',
                 'value' => $stats['total_teams'],
                 'detail' => $stats['total_teams_month'] . ' criados no &uacute;ltimo m&ecirc;s.',
-                'icon' => 'assets/img/icon/team.svg',
+                'icon' => 'users-round',
             ],
             [
                 'label' => 'Partidas',
                 'value' => $stats['total_matches'],
                 'detail' => $stats['total_matches_month'] . ' partidas no &uacute;ltimo m&ecirc;s.',
-                'icon' => 'assets/img/icon/volleyball.svg',
+                'icon' => 'volleyball',
             ],
         ];
 

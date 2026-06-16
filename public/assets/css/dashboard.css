@@ -63,21 +63,10 @@
     flex: 0 0 34px;
 }
 
-.dashboard-nav__icon img {
+.dashboard-nav__icon .app-icon {
     width: 27px;
     height: 27px;
-    object-fit: contain;
-    filter: grayscale(1) brightness(0.45);
-}
-
-.dashboard-nav__link--championships .dashboard-nav__icon img {
-    width: 35px;
-    height: 35px;
-}
-
-.dashboard-nav__link--settings .dashboard-nav__icon img {
-    width: 29px;
-    height: 29px;
+    color: #686868;
 }
 
 .dashboard-nav__link:hover,
@@ -87,9 +76,9 @@
     color: var(--color-orange);
 }
 
-.dashboard-nav__link:hover .dashboard-nav__icon img,
-.dashboard-nav__link.is-active .dashboard-nav__icon img {
-    filter: invert(52%) sepia(94%) saturate(2637%) hue-rotate(346deg) brightness(103%) contrast(103%);
+.dashboard-nav__link:hover .dashboard-nav__icon .app-icon,
+.dashboard-nav__link.is-active .dashboard-nav__icon .app-icon {
+    color: var(--color-orange);
 }
 
 .dashboard-sidebar__footer {
@@ -106,11 +95,10 @@
     font-weight: 500;
 }
 
-.dashboard-help img {
+.dashboard-help .app-icon {
     width: 24px;
     height: 24px;
-    object-fit: contain;
-    filter: grayscale(1) brightness(0.55);
+    color: #686868;
 }
 
 .dashboard-user {
@@ -165,11 +153,10 @@
     transform: translateY(-1px);
 }
 
-.dashboard-user__logout img {
+.dashboard-user__logout .app-icon {
     width: 21px;
     height: 21px;
-    object-fit: contain;
-    filter: grayscale(1) brightness(0.35);
+    color: #555;
 }
 
 .logout-modal,
@@ -346,18 +333,16 @@
     transform: translateY(-1px);
 }
 
-.settings-edit img {
+.settings-edit .app-icon {
     width: 32px;
     height: 32px;
-    object-fit: contain;
-    filter: brightness(0.15);
+    color: #111;
 }
 
-.settings-logout img {
+.settings-logout .app-icon {
     width: 39px;
     height: 39px;
-    object-fit: contain;
-    filter: invert(27%) sepia(95%) saturate(5400%) hue-rotate(354deg) brightness(102%) contrast(106%);
+    color: #ff2418;
 }
 
 .settings-options {
@@ -489,12 +474,11 @@
     padding: 21px 34px;
 }
 
-.stat-card img {
+.stat-card .app-icon {
     width: 72px;
     height: 72px;
     justify-self: center;
-    object-fit: contain;
-    filter: invert(52%) sepia(94%) saturate(2637%) hue-rotate(346deg) brightness(103%) contrast(103%);
+    color: var(--color-orange);
 }
 
 .stat-card__copy h2 {
@@ -642,8 +626,8 @@
         height: 38px;
     }
 
-    .settings-edit img,
-    .settings-logout img {
+    .settings-edit .app-icon,
+    .settings-logout .app-icon {
         width: 28px;
         height: 28px;
     }
@@ -691,7 +675,7 @@
         padding: 18px;
     }
 
-    .stat-card img {
+    .stat-card .app-icon {
         width: 58px;
         height: 58px;
     }

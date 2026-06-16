@@ -9,6 +9,30 @@ $assetVersion = static function (string $asset) use ($publicPath): string {
 
     return is_file($file) ? '?v=' . filemtime($file) : '';
 };
+
+if (!function_exists('mentupIcon')) {
+    function mentupIcon(string $name, string $class = 'app-icon', array $attributes = []): string
+    {
+        $classes = trim($class . ' ' . (string) ($attributes['class'] ?? ''));
+
+        $attributes['data-lucide'] = $name;
+        $attributes['class'] = $classes;
+        $attributes['aria-hidden'] = $attributes['aria-hidden'] ?? 'true';
+
+        $htmlAttributes = [];
+
+        foreach ($attributes as $attribute => $value) {
+            if ($value === null || $value === false || $value === '') {
+                continue;
+            }
+
+            $htmlAttributes[] = htmlspecialchars((string) $attribute, ENT_QUOTES, 'UTF-8') . '="' .
+                htmlspecialchars($value === true ? (string) $attribute : (string) $value, ENT_QUOTES, 'UTF-8') . '"';
+        }
+
+        return '<i ' . implode(' ', $htmlAttributes) . '></i>';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -43,9 +67,8 @@ $assetVersion = static function (string $asset) use ($publicPath): string {
 
             <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"
                 aria-controls="primary-navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+                <?= mentupIcon('menu', 'app-icon menu-toggle__icon menu-toggle__icon--open') ?>
+                <?= mentupIcon('x', 'app-icon menu-toggle__icon menu-toggle__icon--close') ?>
             </button>
 
             <nav class="primary-nav" id="primary-navigation" aria-label="Navega&ccedil;&atilde;o principal">

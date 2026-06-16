@@ -27,14 +27,9 @@
     transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.champ-create__back::before {
-    content: "";
-    width: 11px;
-    height: 11px;
-    border-bottom: 3px solid currentColor;
-    border-left: 3px solid currentColor;
-    transform: rotate(45deg);
-    margin-left: 5px;
+.champ-create__back .app-icon {
+    width: 21px;
+    height: 21px;
 }
 
 .champ-create__back:hover {
@@ -78,11 +73,10 @@
     margin-bottom: 39px;
 }
 
-.champ-form-section__title img {
+.champ-form-section__title .app-icon {
     width: 30px;
     height: 30px;
-    object-fit: contain;
-    filter: invert(52%) sepia(94%) saturate(2637%) hue-rotate(346deg) brightness(103%) contrast(103%);
+    color: var(--color-orange);
 }
 
 .champ-form-section__title h2 {

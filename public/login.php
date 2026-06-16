@@ -93,7 +93,7 @@ require __DIR__ . '/../app/Views/layout/header.php';
         </div>
 
         <div class="auth-security">
-            <img src="assets/img/icon/shield.svg" alt="" aria-hidden="true">
+            <?= mentupIcon('shield-check') ?>
             <div>
                 <strong>Plataforma segura e confi&aacute;vel</strong>
                 <span>Seus dados est&atilde;o protegidos.</span>
@@ -118,7 +118,7 @@ require __DIR__ . '/../app/Views/layout/header.php';
                 <label class="field" for="email">
                     <span class="field__label">E-mail</span>
                     <span class="field__control">
-                        <img class="field__icon" src="assets/img/icon/mail.svg" alt="" aria-hidden="true">
+                        <?= mentupIcon('mail', 'app-icon field__icon') ?>
                         <input id="email" name="email" type="email" placeholder="seu@email.com" autocomplete="email"
                             value="<?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?>" required>
                     </span>
@@ -127,11 +127,14 @@ require __DIR__ . '/../app/Views/layout/header.php';
                 <label class="field" for="password">
                     <span class="field__label">Senha</span>
                     <span class="field__control">
-                        <img class="field__icon" src="assets/img/icon/lock.svg" alt="" aria-hidden="true">
+                        <?= mentupIcon('lock-keyhole', 'app-icon field__icon') ?>
                         <input id="password" name="password" type="password" placeholder="************"
                             autocomplete="current-password" required>
                         <button class="password-toggle" type="button" aria-label="Mostrar senha"
-                            aria-controls="password" data-password-toggle></button>
+                            aria-controls="password" data-password-toggle>
+                            <?= mentupIcon('eye', 'app-icon password-toggle__icon password-toggle__icon--show') ?>
+                            <?= mentupIcon('eye-off', 'app-icon password-toggle__icon password-toggle__icon--hide') ?>
+                        </button>
                     </span>
                 </label>
 
@@ -141,14 +144,14 @@ require __DIR__ . '/../app/Views/layout/header.php';
 
                 <button class="btn btn--primary auth-submit" type="submit">
                     Entrar na conta
-                    <span class="auth-submit__arrow" aria-hidden="true"></span>
+                    <?= mentupIcon('arrow-right', 'app-icon auth-submit__arrow') ?>
                 </button>
             </form>
 
             <div class="auth-divider"><span>Ou continue com</span></div>
 
             <button class="google-button" type="button">
-                <img src="assets/img/icon/google-500x512.png" alt="" aria-hidden="true">
+                <?= mentupIcon('log-in') ?>
                 Continuar com Google
             </button>
 
