@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../Models/ChampsCreateModel.php';
+require_once __DIR__ . '/../Services/ChampionshipScheduleGenerator.php';
 
 class ChampsCreateController
 {
@@ -34,7 +35,15 @@ class ChampsCreateController
                 } else {
                     try {
                         $model = new ChampsCreateModel($pdo);
-                        $model->createChampionship((string) $_SESSION['user_id'], $formData);
+                        $structureModel = new ChampionshipStructureModel($pdo);
+                        $scheduleGenerator = new ChampionshipScheduleGenerator($structureModel);
+                        $ownerId = (string) $_SESSION['user_id'];
+
+                        $model->createChampionship(
+                            $ownerId,
+                            $formData,
+                            fn (string $championshipId): bool => $scheduleGenerator->ensureGenerated($championshipId, $ownerId)
+                        );
 
                         $_SESSION['snack'] = [
                             'type' => 'success',
@@ -43,8 +52,8 @@ class ChampsCreateController
 
                         header('Location: championship-list.php');
                         exit;
-                    } catch (PDOException $e) {
-                        $errors[] = 'Erro ao criar campeonato.' . $e->getMessage();
+                    } catch (Throwable $e) {
+                        $errors[] = 'Erro ao criar campeonato. ' . $e->getMessage();
                     }
                 }
             }

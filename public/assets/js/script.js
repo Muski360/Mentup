@@ -169,6 +169,186 @@ if (championshipEditModal && championshipEditOpen) {
     });
 }
 
+const teamEditorModal = document.querySelector('[data-team-editor-modal]');
+const teamEditorOpen = document.querySelector('[data-team-editor-open]');
+const teamEditorCloseButtons = document.querySelectorAll('[data-team-editor-close]');
+
+if (teamEditorModal && teamEditorOpen) {
+    const openTeamEditorModal = () => {
+        teamEditorModal.classList.add('is-open');
+        teamEditorModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+    };
+
+    const closeTeamEditorModal = () => {
+        teamEditorModal.classList.remove('is-open');
+        teamEditorModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        teamEditorOpen.focus();
+    };
+
+    teamEditorOpen.addEventListener('click', openTeamEditorModal);
+
+    teamEditorCloseButtons.forEach((button) => {
+        button.addEventListener('click', closeTeamEditorModal);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && teamEditorModal.classList.contains('is-open')) {
+            closeTeamEditorModal();
+        }
+    });
+}
+
+const teamEditorTabs = document.querySelectorAll('[data-team-editor-tab]');
+const teamEditorPanels = document.querySelectorAll('[data-team-editor-panel]');
+
+if (teamEditorTabs.length && teamEditorPanels.length) {
+    teamEditorTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+            const teamId = tab.getAttribute('data-team-editor-tab');
+
+            teamEditorTabs.forEach((item) => {
+                item.classList.toggle('is-active', item === tab);
+            });
+
+            teamEditorPanels.forEach((panel) => {
+                panel.classList.toggle('is-active', panel.getAttribute('data-team-editor-panel') === teamId);
+            });
+        });
+    });
+}
+
+const detailModalOpenButtons = document.querySelectorAll('[data-detail-modal-open]');
+const detailModals = document.querySelectorAll('[data-detail-modal]');
+let lastDetailModalOpen = null;
+
+if (detailModalOpenButtons.length && detailModals.length) {
+    const closeDetailModal = (modal) => {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+
+        if (lastDetailModalOpen) {
+            lastDetailModalOpen.focus();
+        }
+    };
+
+    const closeAllDetailModals = () => {
+        detailModals.forEach((modal) => closeDetailModal(modal));
+    };
+
+    detailModalOpenButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const modalKey = button.getAttribute('data-detail-modal-open');
+            const modal = modalKey ? document.querySelector(`[data-detail-modal="${modalKey}"]`) : null;
+
+            if (!modal) {
+                return;
+            }
+
+            closeAllDetailModals();
+            lastDetailModalOpen = button;
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+        });
+    });
+
+    detailModals.forEach((modal) => {
+        modal.querySelectorAll('[data-detail-modal-close]').forEach((button) => {
+            button.addEventListener('click', () => closeDetailModal(modal));
+        });
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') {
+            return;
+        }
+
+        detailModals.forEach((modal) => {
+            if (modal.classList.contains('is-open')) {
+                closeDetailModal(modal);
+            }
+        });
+    });
+}
+
+const matchResultOpenButtons = document.querySelectorAll('[data-match-result-open]');
+const matchResultModals = document.querySelectorAll('[data-match-result-modal]');
+let lastMatchResultOpen = null;
+
+if (matchResultOpenButtons.length && matchResultModals.length) {
+    const closeMatchResultModal = (modal) => {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+
+        if (lastMatchResultOpen) {
+            lastMatchResultOpen.focus();
+        }
+    };
+
+    const closeAllMatchResultModals = () => {
+        matchResultModals.forEach((modal) => closeMatchResultModal(modal));
+    };
+
+    matchResultOpenButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const matchId = button.getAttribute('data-match-result-open');
+            const modal = Array.from(matchResultModals).find(
+                (item) => item.getAttribute('data-match-result-modal') === matchId
+            );
+
+            if (!modal) {
+                return;
+            }
+
+            closeAllMatchResultModals();
+            lastMatchResultOpen = button;
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+        });
+    });
+
+    matchResultModals.forEach((modal) => {
+        modal.querySelectorAll('[data-match-result-close]').forEach((button) => {
+            button.addEventListener('click', () => closeMatchResultModal(modal));
+        });
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') {
+            return;
+        }
+
+        matchResultModals.forEach((modal) => {
+            if (modal.classList.contains('is-open')) {
+                closeMatchResultModal(modal);
+            }
+        });
+    });
+}
+
+const matchResultNotes = document.querySelectorAll('.match-result-notes textarea[maxlength]');
+
+matchResultNotes.forEach((textarea) => {
+    const counter = textarea.closest('.match-result-notes')?.querySelector('small');
+    const maxLength = Number.parseInt(textarea.getAttribute('maxlength') || '0', 10);
+
+    if (!counter || !maxLength) {
+        return;
+    }
+
+    const updateCounter = () => {
+        counter.textContent = `${textarea.value.length}/${maxLength}`;
+    };
+
+    textarea.addEventListener('input', updateCounter);
+    updateCounter();
+});
+
 const snacks = document.querySelectorAll('[data-snack]');
 
 snacks.forEach((snack) => {

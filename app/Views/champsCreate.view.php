@@ -22,7 +22,7 @@ require __DIR__ . '/layout/header.php';
             </div>
         <?php endif; ?>
 
-        <form class="champ-create-card" action="criar-campeonato.php" method="post" data-championship-form>
+        <form class="champ-create-card" action="create-championship.php" method="post" data-championship-form>
             <section class="champ-form-section">
                 <header class="champ-form-section__title">
                     <img src="assets/img/icon/info.svg" alt="" aria-hidden="true">
@@ -68,7 +68,7 @@ require __DIR__ . '/layout/header.php';
                         <select name="format" required>
                             <option value="groups_and_knockout"<?= $formData['format'] === 'groups_and_knockout' ? ' selected' : '' ?>>Fase de grupos + chaveamento</option>
                             <option value="knockout"<?= $formData['format'] === 'knockout' ? ' selected' : '' ?>>Chaveamento</option>
-                            <option value="league"<?= $formData['format'] === 'league' ? ' selected' : '' ?>>Pontos corridos</option>
+                            <option value="round_robin"<?= $formData['format'] === 'round_robin' ? ' selected' : '' ?>>Pontos corridos</option>
                         </select>
                     </label>
 

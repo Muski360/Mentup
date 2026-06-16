@@ -6,13 +6,18 @@ class ChampsCreateModel
     {
     }
 
-    public function createChampionship(string $ownerId, array $data): string
+    public function createChampionship(string $ownerId, array $data, ?callable $afterCreate = null): string
     {
         $this->pdo->beginTransaction();
 
         try {
             $championshipId = $this->insertChampionship($ownerId, $data);
             $this->insertTeams($championshipId, $data['teams']);
+
+            // Mantem campeonato, times, fases e partidas na mesma transacao.
+            if ($afterCreate !== null) {
+                $afterCreate($championshipId);
+            }
 
             $this->pdo->commit();
 
