@@ -15,7 +15,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 COPY composer.json composer.lock* ./
 
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader || true
+RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
 
 COPY . .
 
@@ -23,6 +23,8 @@ RUN chown -R www-data:www-data /var/www/html
 
 COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
 
+RUN chmod +x /var/www/html/docker/start-apache.sh
+
 EXPOSE 80
 
-CMD ["apache2-foreground"]
+CMD ["/var/www/html/docker/start-apache.sh"]

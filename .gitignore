@@ -1,3 +1,5 @@
 .env
 vendor/
 secrets/
+node_modules/
+.wrangler/
