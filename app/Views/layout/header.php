@@ -19,6 +19,8 @@ $assetVersion = static function (string $asset) use ($publicPath): string {
     <meta name="description"
         content="Mentup &eacute; uma plataforma simples para organizar campeonatos, times, partidas e resultados esportivos.">
     <title><?= htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8') ?></title>
+    <link rel="icon" type="image/png" href="<?= $basePath ?>assets/img/logos/logo_simbolo_1000x1000.png<?= $assetVersion('assets/img/logos/logo_simbolo_1000x1000.png') ?>">
+    <link rel="apple-touch-icon" href="<?= $basePath ?>assets/img/logos/logo_simbolo_1000x1000.png<?= $assetVersion('assets/img/logos/logo_simbolo_1000x1000.png') ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"

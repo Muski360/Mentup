@@ -13,7 +13,7 @@ require __DIR__ . '/../app/Views/layout/header.php';
                 o esporte.</p>
 
             <div class="hero__actions">
-                <a class="btn btn--primary btn--large" href="criar-campeonato.php">
+                <a class="btn btn--primary btn--large" href="create-championship.php">
                     <img src="assets/img/icon/home_trophy.svg" alt="" aria-hidden="true">
                     Criar um campeonato
                 </a>
